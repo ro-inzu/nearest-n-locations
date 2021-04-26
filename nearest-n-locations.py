@@ -7,7 +7,7 @@ import heapq, math
 
 def nearest_n_locations(allLocations: list,numLocations: int) -> list:
     distance_each_location = []
-    if len(allLocations) == 0:
+    if len(allLocations) == 0 and len(allLocations) > numLocations:
         return distance_each_location
 
     heapq.heapify(distance_each_location)
@@ -17,7 +17,7 @@ def nearest_n_locations(allLocations: list,numLocations: int) -> list:
         distance = math.sqrt(sol)
         heapq.heappush(distance_each_location,[distance,locations])
 
-    nearest = [heapq.heappop(distance_each_location)[1] for x in range(0,2) ]
+    nearest = [heapq.heappop(distance_each_location)[1] for x in range(0,numLocations) ]
     return nearest
 
 
